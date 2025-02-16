@@ -1,0 +1,211 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'aoc_2024'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=aoc-2024"
+                ],
+                "filter": {
+                    "name": "aoc_2024",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'aoc-2024'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=aoc-2024",
+                    "--package=aoc-2024"
+                ],
+                "filter": {
+                    "name": "aoc-2024",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'aoc-2024'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=aoc-2024",
+                    "--package=aoc-2024"
+                ],
+                "filter": {
+                    "name": "aoc-2024",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'day-2'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=day-2",
+                    "--package=aoc-2024"
+                ],
+                "filter": {
+                    "name": "day-2",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'day-2'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=day-2",
+                    "--package=aoc-2024"
+                ],
+                "filter": {
+                    "name": "day-2",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'day-3'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=day-3",
+                    "--package=aoc-2024"
+                ],
+                "filter": {
+                    "name": "day-3",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'day-3'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=day-3",
+                    "--package=aoc-2024"
+                ],
+                "filter": {
+                    "name": "day-3",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'day-4'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=day-4",
+                    "--package=aoc-2024"
+                ],
+                "filter": {
+                    "name": "day-4",
+                    "kind": "bin"
+                }
+            },
+            "args": ["${workspaceFolder}/inputs/day-4/test.txt"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'day-4'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=day-4",
+                    "--package=aoc-2024"
+                ],
+                "filter": {
+                    "name": "day-4",
+                    "kind": "bin"
+                }
+            },
+            "args": ["${workspaceFolder}/inputs/day-4/test.txt"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'day-5'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=day-5",
+                    "--package=aoc-2024"
+                ],
+                "filter": {
+                    "name": "day-5",
+                    "kind": "bin"
+                }
+            },
+            "args": ["${workspaceFolder}/inputs/day-5/test.txt"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'day-6'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=day-6",
+                    "--package=aoc-2024"
+                ],
+                "filter": {
+                    "name": "day-6",
+                    "kind": "bin"
+                }
+            },
+            "args": ["${workspaceFolder}/inputs/day-6/test.txt"],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

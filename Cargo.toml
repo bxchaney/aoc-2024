@@ -1,0 +1,12 @@
+[package]
+name = "aoc-2024"
+version = "0.1.0"
+edition = "2021"
+
+
+
+
+[dependencies]
+
+[dependencies.regex]
+version= "1.11.1"
