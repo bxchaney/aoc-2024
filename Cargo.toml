@@ -7,6 +7,7 @@ edition = "2021"
 
 
 [dependencies]
+itertools = { version ="0.8.2" }
 
 [dependencies.regex]
 version= "1.11.1"
