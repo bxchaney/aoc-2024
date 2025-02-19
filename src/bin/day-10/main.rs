@@ -72,13 +72,8 @@ fn peaks(topo: &Vec<Vec<Elevation>>, point: &(usize, usize)) -> Vec<(usize, usiz
     if let Some(next) = elevation.next() {
         adjacent(&topo, &point)
             .iter()
-            .filter_map(|p| {
-                if topo[p.0][p.1] == next {
-                    Some(peaks(&topo, p))
-                } else {
-                    None
-                }
-            })
+            .filter(|p| topo[p.0][p.1] == next)
+            .map(|p| peaks(&topo, p))
             .flatten()
             .collect()
     } else {
@@ -103,13 +98,10 @@ fn main() {
         .iter()
         .enumerate()
         .map(|(i, row)| {
-            row.iter().enumerate().filter_map(move |(j, e)| {
-                if *e == Elevation::Trailhead {
-                    Some((i, j))
-                } else {
-                    None
-                }
-            })
+            row.iter()
+                .enumerate()
+                .filter(|(_, e)| **e == Elevation::Trailhead)
+                .map(move |(j, _)| (i, j))
         })
         .flatten()
         .map(|p| score(&topo, p))
@@ -121,13 +113,10 @@ fn main() {
         .iter()
         .enumerate()
         .map(|(i, row)| {
-            row.iter().enumerate().filter_map(move |(j, e)| {
-                if *e == Elevation::Trailhead {
-                    Some((i, j))
-                } else {
-                    None
-                }
-            })
+            row.iter()
+                .enumerate()
+                .filter(|(_, e)| **e == Elevation::Trailhead)
+                .map(move |(j, _)| (i, j))
         })
         .flatten()
         .map(|p| rating(&topo, p))
