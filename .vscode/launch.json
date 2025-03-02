@@ -224,6 +224,24 @@
             },
             "args": ["${workspaceFolder}/inputs/day-9/input.txt"],
             "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'day-12'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=day-12",
+                    "--package=aoc-2024"
+                ],
+                "filter": {
+                    "name": "day-12",
+                    "kind": "bin"
+                }
+            },
+            "args": ["${workspaceFolder}/inputs/day-12/test-4.txt"],
+            "cwd": "${workspaceFolder}"
         }
     ]
 }
