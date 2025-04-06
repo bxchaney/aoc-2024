@@ -33,7 +33,7 @@ where
         || j.as_() >= collection[0].len()
 }
 
-#[derive(PartialEq, Eq, Clone, Copy, Hash)]
+#[derive(PartialEq, Eq, Clone, Copy, Hash, Debug)]
 pub enum Direction {
     Up,
     Down,
@@ -99,6 +99,18 @@ impl From<&(i32, i32)> for Direction {
             (-1, 0) => Self::Up,
             (1, 0) => Self::Down,
             _ => panic!("invalid input!"),
+        }
+    }
+}
+
+impl From<char> for Direction {
+    fn from(c: char) -> Self {
+        match c {
+            '^' => Self::Up,
+            'v' => Self::Down,
+            '<' => Self::Left,
+            '>' => Self::Right,
+            _ => panic!("unrecognized character!"),
         }
     }
 }
