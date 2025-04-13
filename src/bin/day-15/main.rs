@@ -132,6 +132,7 @@ fn score(map: &Vec<Vec<Terrain>>) -> i32 {
         .sum::<i32>()
 }
 
+#[allow(dead_code)]
 fn show_map(map: &Vec<Vec<Terrain>>) {
     for row in map {
         println!("{}", row.iter().map(|t| t.to_string()).join(""));

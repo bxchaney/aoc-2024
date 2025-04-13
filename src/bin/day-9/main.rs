@@ -1,5 +1,3 @@
-use std::collections::HashSet;
-
 use aoc_2024::read_input;
 
 #[derive(Debug, Clone, Copy)]

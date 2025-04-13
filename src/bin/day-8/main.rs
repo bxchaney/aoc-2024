@@ -1,5 +1,5 @@
 use gcd::gcd;
-use itertools::{all, Itertools};
+use itertools::Itertools;
 use std::{
     collections::{HashMap, HashSet},
     hash::RandomState,
