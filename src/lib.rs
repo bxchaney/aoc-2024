@@ -8,8 +8,10 @@ use std::{
 
 use num_traits::{AsPrimitive, PrimInt, Zero};
 
+pub type InputFileBuffer = Lines<BufReader<File>>;
+
 /// Assuming that the input file will be the first command line arg
-pub fn read_input() -> Lines<BufReader<File>> {
+pub fn read_input() -> InputFileBuffer {
     let args: Vec<String> = env::args().collect();
     if args.len() < 2 {
         panic!("not enough args!");
