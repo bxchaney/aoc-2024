@@ -24,6 +24,14 @@ impl Calibration {
     }
 }
 
+fn add(a: u64, b: u64) -> u64 {
+    a + b
+}
+
+fn mult(a: u64, b: u64) -> u64 {
+    a * b
+}
+
 fn concat(a: u64, b: u64) -> u64 {
     let order;
     if b < 10 {
@@ -37,41 +45,44 @@ fn concat(a: u64, b: u64) -> u64 {
     a * 10_u64.pow(order) + b
 }
 
-fn is_valid_helper(calibration: &Calibration, i: usize, acc: u64, include_concat: bool) -> bool {
-    if i == calibration.operands.len() {
-        return acc == calibration.value;
-    }
-    if acc > calibration.value {
-        return false;
+fn is_valid(calibration: &Calibration, functions: &Vec<fn(u64, u64) -> u64>) -> bool {
+    let target = calibration.value;
+    let mut stack = vec![(calibration.operands[0], &calibration.operands[1..])];
+    while let Some(next) = stack.pop() {
+        if next.1.len() == 0 {
+            if next.0 == target {
+                return true;
+            } else {
+                continue;
+            }
+        }
+
+        if next.0 > target {
+            continue;
+        }
+
+        stack.extend(
+            functions
+                .iter()
+                .map(|f| (f(next.0, next.1[0]), &next.1[1..])),
+        )
     }
 
-    (include_concat
-        && is_valid_helper(
-            calibration,
-            i + 1,
-            concat(acc, calibration.operands[i]),
-            include_concat,
-        ))
-        || is_valid_helper(
-            calibration,
-            i + 1,
-            acc + calibration.operands[i],
-            include_concat,
-        )
-        || is_valid_helper(
-            calibration,
-            i + 1,
-            acc * calibration.operands[i],
-            include_concat,
-        )
+    false
 }
 
-fn is_valid(calibration: &Calibration) -> bool {
-    is_valid_helper(calibration, 1, calibration.operands[0], false)
-}
-
-fn is_valid_concat(calibration: &Calibration) -> bool {
-    is_valid_helper(calibration, 1, calibration.operands[0], true)
+fn total_calibrations(calibrations: &Vec<Calibration>, methods: &Vec<fn(u64, u64) -> u64>) -> u64 {
+    let validation = |cal| is_valid(cal, methods);
+    calibrations
+        .iter()
+        .filter_map(|cal| {
+            if validation(cal) {
+                Some(cal.value)
+            } else {
+                None
+            }
+        })
+        .sum::<u64>()
 }
 
 fn main() {
@@ -79,30 +90,15 @@ fn main() {
         .map(|l| Calibration::from(&l.unwrap()))
         .collect();
 
-    let pt1 = calibrations
-        .iter()
-        .filter_map(|cal| {
-            if is_valid(&cal) {
-                Some(cal.value)
-            } else {
-                None
-            }
-        })
-        .sum::<u64>();
+    let pt1_methods = vec![add, mult];
+
+    let pt1 = total_calibrations(&calibrations, &pt1_methods);
 
     println!("pt1: {}", pt1);
 
-    let pt2 = calibrations
-        .iter()
-        .filter(|cal| !is_valid(&cal))
-        .filter_map(|cal| {
-            if is_valid_concat(&cal) {
-                Some(cal.value)
-            } else {
-                None
-            }
-        })
-        .sum::<u64>();
+    let pt2_methods = vec![add, mult, concat];
 
-    println!("pt2: {}", pt1 + pt2);
+    let pt2 = total_calibrations(&calibrations, &pt2_methods);
+
+    println!("pt2: {}", pt2);
 }
